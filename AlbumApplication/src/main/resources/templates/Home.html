@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Home</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
+</head>
+<body style="background-color: #fbd0e6">
+<div style="background-color: #ce99ff">
+    <br><br>
+    <h1 style="text-align : center; font-weight : italic ; color: white" >Welcome to my Album Web Application</h1>
+    <br>
+</div>
+<br>
+<div style="margin : 50px 200px 200px 200px; font-size : 20px ; text-align : justify ; font-family: Lucida Calligraphy; font-weight: bold">
+This application has been developed using Spring MVC Framework and ThymeLeaf for the presentation layer.
+The user will be able to perform all the basic operations like CREATE, DISPLAY, EDIT and DELETE on the Album database.<br>
+    <br><u>Select any of the following below to proceed:</u><br><br><br>
+    <div style = "text-align : center">
+    <button class="btn btn-success" type="button"><a th:href="@{/AlbumList}")} style="color:white">Go to Albums>></a></button>&nbsp; &nbsp;
+    <button class="btn btn-danger" type="button"><a th:href="@{/Song}")} style="color:white">Go to Songs>></a></button>&nbsp; &nbsp; &nbsp;
+    <button class="btn btn-primary" type="button"><a th:href="@{/Singers}")} style="color:white">Go to Singers>></a></button>
+    </div>
+</div>
+<div th:insert="navbar :: footer"></div>
+</body>
+</html>

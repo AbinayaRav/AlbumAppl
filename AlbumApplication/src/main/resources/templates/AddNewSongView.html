@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Create Song</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
+    <style>
+        b{
+        color: red;
+        text-align: right;
+        font-style: italic;
+        }
+
+
+    </style>
+</head>
+<body style="background-color:#e6ffcc">
+<div th:insert="navbar :: header"></div>
+<br>
+<br>
+<br>
+
+<div style="background-color:#99ffdd">
+    <h2 align="center" style="font-style:italic">Add a New Song</h2>
+    <hr align="center">
+</div>
+<br>
+<form  th:action="${album!=null} ? @{/createSong/{id}(id = ${album.albumId})} : @{/createSong}"
+      th:object="${song}" method="post" style = "max-width: 1000px; margin : 0 auto">
+    <div class="form-group row">
+    <label class="control-label col-sm-2" for="title">Song Title : </label>
+    <div class="col-sm-10">
+        <input class="form-control" id="title" type="text" th:field="*{title}" placeholder="Enter Song Name" required>
+        <b th:if = "${#fields.hasErrors('title')}" th:errors = "*{title}">Title error</b>
+    </div>
+    </div>
+    <div class="form-group row">
+    <label class="control-label col-sm-2" for="trackLength">Track Length : </label>
+    <div class="col-sm-10">
+        <input class="form-control" id="trackLength" type="text" th:field="*{trackLength}"
+               placeholder="Enter Track Length" required/>
+        <b th:if = "${#fields.hasErrors('trackLength')}" th:errors = "*{trackLength}">TrackLength error</b>
+    </div>
+    </div>
+    <div class="form-group row">
+    <label class="control-label col-sm-2" for="style">Style : </label>
+    <div class="col-sm-10">
+        <input class="form-control" id="style" type="text" th:field="*{style}" placeholder="Enter Style" required/>
+        <b th:if = "${#fields.hasErrors('style')}" th:errors = "*{style}">Style error</b>
+    </div>
+    </div>
+    <div class="form-group row">
+    <label class="control-label col-sm-2">Bill Board : </label>
+    <div class="col-sm-10">
+        <input class="form-control" id="billBoard" type="text" th:field="*{billBoard}" placeholder="Enter BillBoard" required>
+        <b th:if = "${#fields.hasErrors('billBoard')}" th:errors = "*{billBoard}">Bill Board error</b>
+    </div>
+    </div>
+    <div th:if="${album!=null}">
+    <input  id="album" type="hidden" th:field="*{album}"/>
+    </div>
+    <div class="form-group row">
+    <label class="control-label col-sm-2" for="certification">Certification : </label>
+    <div class="col-sm-10">
+        <input class="form-control" id="certification" type="text" th:field="*{certification}"
+               placeholder="Enter Certification" required>
+        <b th:if = "${#fields.hasErrors('certification')}" th:errors = "*{certification}">Certification error</b>
+    </div>
+    </div>
+    <div class="form-group row" th:if="${singers!=null}">
+    <label th:if="${!singers.isEmpty}" class="control-label col-sm-2">Please Select the Singer : </label>
+    <div class="col-sm-10" th:if="${!singers.isEmpty}">
+        <select class="form-control" th:field="*{singer}">
+            <option th:each="singer: ${singers}" th:value="${singer.singerId}" th:text="${singer.singerName}"/>
+        </select>
+    </div>
+    </div>
+    <div class="form-group row">
+    <label th:if="${albums!=null }" class="control-label col-sm-2">Please Select the Album : </label>
+    <div class="col-sm-10" th:if="${albums!=null}">
+        <select class="form-control" th:field="*{album}">
+            <option th:each="album: ${albums}" th:value="${album.albumId}" th:text="${album.albumName}"/>
+        </select>
+    </div>
+    </div>
+    <br>
+    <div align="center">
+        <input class="btn btn-danger" type="submit" value="Create Song">
+    </div>
+</form>
+</form>
+<br><br><br>
+</body>
+</html>

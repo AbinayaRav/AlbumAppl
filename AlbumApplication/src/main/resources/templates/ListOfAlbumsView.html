@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>List Of Albums</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
+</head>
+
+
+<body style="background-color:#ffb566">
+<div th:insert="navbar :: header"></div>
+<br>
+<br>
+<br>
+<br>
+<div style="background-color:#ffb566 ; text-align:center">
+    <h4><b>LIST OF ALBUMS</b></h4>
+</div>
+<div th:switch=${album} align="center" style = "margin: 10px 50px 100px 50px">
+    <h2 th:case="null">No Albums Found</h2>
+    <div th:case="*">
+        <table class="table table-info table-striped table-hover">
+            <thead>
+            <tr>
+                <th>Album Id</th>
+                <th>Album Name</th>
+                <th>Album Length</th>
+                <th>Album Price</th>
+                <th>Rating</th>
+                <th>Record Label</th>
+                <th>Release Date</th>
+                <th>Producer</th>
+                <th>Singers</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="album : ${album}">
+                <td th:text="${album.albumId} "></td>
+                <td th:text="${album.albumName} "></td>
+                <td th:text="${album.albumLength} "></td>
+                <td th:text="${album.price} "></td>
+                <td th:text="${album.rating} "></td>
+                <td th:text="${album.recordLabel} "></td>
+                <td th:text="${album.releaseDate} "></td>
+                <td th:text="${album.producer} "></td>
+                <td th:text="${album.listOfSingers}"></td>
+                <td></td>
+                <td>
+                    <button class="btn btn-success" type="button"><a th:href="@{/editAlbum/{id}(id=${album.albumId})}" style="color:white">Edit</a></button>
+                </td>
+                <td>
+                    <button class="btn btn-danger" type="button"><a th:href="@{/deleteAlbum/{id}(id=${album.albumId})}" style="color:white">Delete</a></button>
+                </td>
+                <td>
+                    <button class="btn btn-warning" type="button"><a th:href="@{/AddSongToAlbum/{id}(id=${album.albumId})}" style="color:white">Add Song</a>
+                    </button>
+                </td>
+                <td>
+                    <button class="btn btn-primary" type="button"><a th:href="@{/ViewSongsInAlbum/{id}(id=${album.albumId})}" style="color:white">View SongList</a>
+                    </button>
+                </td>
+            </tr>
+            </tbody>
+
+        </table>
+
+    </div>
+</div>
+</body>
+</html>

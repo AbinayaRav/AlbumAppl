@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>List Of Singers</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
+</head>
+
+
+<body style="background-color:#ffb566">
+<div th:insert="navbar :: header"></div>
+<br>
+<br>
+<br>
+<br>
+<div style="background-color:#ffb566 ; text-align:center">
+    <h4><b>LIST OF SINGERS</b></h4>
+</div>
+<div th:switch=${singer} align="center" style="margin: 10px 50px 100px 50px">
+    <h2 th:case="null">No Singers Found</h2>
+    <div th:case="*">
+        <div class="alert alert-danger" th:if="${errorMessage}">
+            <b><i>
+                <div th:text="${errorMessage}"></div>
+            </i></b>
+        </div>
+        <table class="table table-info table-striped table-hover">
+            <thead>
+            <tr>
+                <th>Singer Id</th>
+                <th>Singer Name</th>
+                <th>Age</th>
+                <th>Country</th>
+                <th>Gender</th>
+                <th>Debut</th>
+                <th>Awards Received</th>
+                <th>Hobby</th>
+                <th>Albums</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="singer : ${singer}">
+                <td th:text="${singer.singerId} "></td>
+                <td th:text="${singer.singerName} "></td>
+                <td th:text="${singer.age} "></td>
+                <td th:text="${singer.country} "></td>
+                <td th:text="${singer.gender} "></td>
+                <td th:text="${singer.debut} "></td>
+                <td th:text="${singer.awardsReceived} "></td>
+                <td th:text="${singer.hobby} "></td>
+                <td th:text="${singer.listOfAlbums} "></td>
+                <td></td>
+                <td>
+                    <button class="btn btn-success" type="button"><a
+                            th:href="@{/editSinger/{id}(id=${singer.singerId})}" style="color:white">Edit</a></button>
+                </td>
+                <td>
+                    <button class="btn btn-danger" type="button"><a
+                            th:href="@{/deleteSinger/{id}(id=${singer.singerId})}" style="color:white">Delete</a>
+                    </button>
+                </td>
+                <td>
+                    <button class="btn btn-primary" type="button"><a
+                            th:href="@{/ViewSongsOfSinger/{id}(id=${singer.singerId})}" style="color:white">Songs
+                        Sung</a></button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+</html>

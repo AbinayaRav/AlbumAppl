@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Create Singer</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
+    <style>
+        b{
+        color: red;
+        text-align: right;
+        font-style: italic;
+        }
+
+
+    </style>
+</head>
+<body style="background-color:#e6ffcc">
+<div th:insert="navbar :: header"></div>
+<br>
+<br>
+<br>
+
+<div style="background-color:#99ffdd ; text-align:center">
+    <div th:if = "${singer.singerId==0}" style="font-style:italic"><h2>Add a New Singer</h2></div>
+    <div th:unless = "${singer.singerId==0}" style="font-style:italic"><h2>Edit Singer Details</h2></div>
+    <hr align="center">
+</div>
+<br>
+<form th:action="@{/createSinger}" th:object="${singer}" method="post" style= "max-width:1000px; margin : 0 auto" >
+    <div class="form-group row"  th:if = "${singer.singerId!=0}">
+        <label class="control-label col-sm-2" for="singerId">Singer Id : </label>
+        <div class="col-sm-10">
+            <input class="form-control" id="singerId" type="text" th:field="*{singerId}" readonly>
+        </div>
+    </div>
+    <div class="form-group row">
+    <label class="control-label col-sm-2" for="singerName">Singer Name : </label>
+    <div class="col-sm-10">
+        <input class="form-control" id="singerName" type="text" th:field="*{singerName}"
+               placeholder="Enter Singer Name" required>
+        <b th:if = "${#fields.hasErrors('singerName')}" th:errors = "*{singerName}">Singer Name error</b>
+    </div>
+    </div>
+    <div class="form-group row">
+    <label class="control-label col-sm-2" for="age">Age : </label>
+    <div class="col-sm-10">
+        <input class="form-control" id="age" type="text" th:field="*{age}" placeholder="Enter Singer's age" required>
+        <b th:if = "${#fields.hasErrors('age')}" th:errors = "*{age}">Age error</b>
+    </div>
+    </div>
+    <div class="form-group row">
+    <label class="control-label col-sm-2" for="country">Country : </label>
+    <div class="col-sm-10">
+        <input class="form-control" id="country" type="text" th:field="*{country}" placeholder="Enter Country" required>
+        <b th:if = "${#fields.hasErrors('country')}" th:errors = "*{country}">Country error</b>
+    </div>
+    </div>
+    <div class="form-group row">
+    <label class="control-label col-sm-2">Gender : </label>
+    <div class="col-sm-10">
+        <label><input id="male" type="radio" th:field="*{gender}" value="M"  name="gender" checked="checked">Male</label>
+        <label><input id="female" type="radio" th:field="*{gender}"  value="F"  name="gender">Female</label>
+    </div>
+    </div>
+    <div class="form-group row">
+    <label class="control-label col-sm-2" for="debut">Debut : </label>
+    <div class="col-sm-10">
+        <input class="form-control" id="debut" type=date  th:field="*{debut}" placeholder="Enter Debut" required>
+        <b th:if = "${#fields.hasErrors('debut')}" th:errors = "*{debut}">Debut error</b>
+    </div>
+    </div>
+    <div class="form-group row">
+    <label class="control-label col-sm-2" for="awardsReceived">Awards Received : </label>
+    <div class="col-sm-10">
+        <input class="form-control" id="awardsReceived" type="text" th:field="*{awardsReceived}"
+               placeholder="Enter Number of awards Received" required>
+        <b th:if = "${#fields.hasErrors('awardsReceived')}" th:errors = "*{awardsReceived}" >Awards Received error</b>
+    </div>
+    </div>
+    <div class="form-group row">
+    <label class="control-label col-sm-2" for="hobby">Hobby : </label>
+    <div class="col-sm-10">
+        <input class="form-control" id="hobby" type="text" th:field="*{hobby}" placeholder="Enter Hobby" required>
+        <b th:if = "${#fields.hasErrors('hobby')}" th:errors = "*{hobby}">Hobby error</b>
+    </div>
+    </div>
+    <br>
+    <div align="center">
+        <input class="btn btn-danger" type="submit" value="Add Singer">
+    </div>
+</form>
+<br><br><br>
+</body>
+</html>
