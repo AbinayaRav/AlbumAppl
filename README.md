@@ -5,7 +5,7 @@ ABINAYA R
 **CODE AVAILABILITY:**       
 
 GitHub URL: **https://github.com/AbinayaRav/AlbumApp.git**  
-AWS Elastic BeanStaik URL : **albumapp-env.eba-2nksypm8.us-east-1.elasticbeanstalk.com/**  
+AWS Elastic BeanStalk URL : **albumapp-env.eba-2nksypm8.us-east-1.elasticbeanstalk.com/**  
 
 
 **PROJECT DESCRIPTION:**  
