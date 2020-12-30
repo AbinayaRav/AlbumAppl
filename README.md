@@ -4,14 +4,16 @@ ABINAYA R
 
 **CODE AVAILABILITY:**       
 
-GitHub URL: https://github.com/AbinayaRav/AlbumApp.git  
-AWS Elastic BeanStaik URL : albumapp-env.eba-2nksypm8.us-east-1.elasticbeanstalk.com/  
+GitHub URL: **https://github.com/AbinayaRav/AlbumApp.git**  
+AWS Elastic BeanStaik URL : **albumapp-env.eba-2nksypm8.us-east-1.elasticbeanstalk.com/**  
 
-**PROJECT DESCRIPTION**
-This Spring MVC Album application performs all the CRUD operations from the front end.
+
+**PROJECT DESCRIPTION:**  
+
+This Spring MVC Album application performs all the CRUD operations from the front end.  
 **1. Create a new Album, Song or Singer**      
 **2. Retrieve details of all the entities (Album, Song or Singer)**       
-**3. Edit individual album, Song or Singer details. **  
+**3. Edit individual album, Song or Singer details.**  
 **4. Delete any of the album, Song or Singer.**          
 **4. Add/Delete song to an existing album, view all the songs/singers in an album**        
 **5. Retrieve all the songs sung by a singer.**    
@@ -22,10 +24,12 @@ The following have been implemented this architecture.
 -The business logic to perform all the CRUD operations by interacting with Databases are provided in RestControllers and Controllers.   
 -Three Repositories (AlbumRepository, SingerRepository, SongRepository) are used to expose the entities as resources.  
 -3 Models - Album, Song and Singer which are ORM related. JPA is used to exhibit the models as persistence objects. Relationships used are:  
-    One to Many Bidirectional relationship between Album and Song.  
-    Many to One Unidirectional relationship between Song and Singer.  
-    Many to Many Bidirectional relationship between Album and Singer.  
--MySQL DB for database Connectiveity.   
+     &nbsp;&nbsp; &nbsp;&nbsp;    One to Many Bidirectional relationship between Album and Song.  
+     &nbsp;&nbsp; &nbsp;&nbsp;    Many to One Unidirectional relationship between Song and Singer.  
+     &nbsp;&nbsp; &nbsp;&nbsp;    Many to Many Bidirectional relationship between Album and Singer.  
+-MySQL DB for database Connectivity.
+-Spring Security has been implemented for the project. Oauth2 secured through github and google.  
+-Project has been successfully completed and deployed on to AWS cloud.  
 
 
 **INSTALLATION, COMPILE AND RUNTIME REQUIREMENTS:**  
